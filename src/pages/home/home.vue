@@ -1,0 +1,14 @@
+<template>
+    <div class="home">hello world</div>
+</template>
+
+<script>
+  export default {
+    name: "home"
+  }
+</script>
+
+<style>
+  .home {
+  }
+</style>
