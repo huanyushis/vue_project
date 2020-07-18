@@ -1,17 +1,15 @@
 <!-- The ref attr used to find the swiper instance -->
 <template>
-  <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
-    <!-- slides -->
-    <swiper-slide>I'm Slide 1</swiper-slide>
-    <swiper-slide>I'm Slide 2</swiper-slide>
-    <swiper-slide>I'm Slide 3</swiper-slide>
-    <swiper-slide>I'm Slide 4</swiper-slide>
-    <swiper-slide>I'm Slide 5</swiper-slide>
-    <swiper-slide>I'm Slide 6</swiper-slide>
-    <swiper-slide>I'm Slide 7</swiper-slide>
-    <!-- Optional controls -->
-    <div class="swiper-pagination" slot="pagination"></div>
-  </swiper>
+  <div class="wrapper">
+    <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
+      <!-- slides -->
+      <swiper-slide v-for="item of swiperLists" :key="item.id">
+        <img class="swiper-img" :src="item.imgUrl" alt="">
+      </swiper-slide>
+      <!-- Optional controls -->
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+  </div>
 </template>
 
 <script>
@@ -29,7 +27,18 @@
           onTransitionStart(swiper) {
             console.log(swiper)
           }
-        }
+        },
+        swiperLists:[{
+          id:'001',
+          imgUrl:"http://imgs.qunarzz.com/vc/e3/a1/71/f498dfd3bed948d623c9093252.jpg_92.jpg"
+        },{
+          id:'002',
+          imgUrl: "http://imgs.qunarzz.com/vc/6d/9f/35/b8ad5468f73fd60ec0ced086f6.jpg_92.jpg"
+        },
+          {
+            id: '003',
+            imgUrl: "http://imgs.qunarzz.com/vs_ceph_vcimg/b8c4527c41649814cc4cf86880abba54.jpeg"
+          }]
       }
     },
     // you can find current swiper instance object like this, while the notNextTick property value must be true
@@ -47,15 +56,17 @@
 </script>
 
 <style lang="stylus" scoped>
+  .wrapper >>> .swiper-pagination-bullet-active
+    background: #fff
   .wrapper
     background-color: #eee
     overflow: hidden
     width: 100%
     height: 0
-    padding-bottom 31.25%
+    padding-bottom 30%
 
     .swiper-img
       width: 100%
-</style>
+</style>s
 
 
